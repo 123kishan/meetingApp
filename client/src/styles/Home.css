@@ -1,0 +1,96 @@
+/* Set background to dark brown */
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #4b2e1e; /* Dark Brown */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+/* Semi-transparent overlay */
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* Form Container */
+.form-container {
+    position: relative;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    text-align: center;
+}
+
+/* Title */
+.title {
+    font-size: 26px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Input Group */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+/* Input Label */
+.input-group label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+/* Input Field */
+.input-field {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    font-size: 16px;
+    background: white;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Input Focus Effect */
+.input-field:focus {
+    border-color: #ff8c00;
+    outline: none;
+    box-shadow: 0 0 8px rgba(255, 140, 0, 0.5);
+}
+
+/* Submit Button */
+.submit-button {
+    width: 100%;
+    padding: 14px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 5px 15px rgba(255, 126, 95, 0.4);
+}
+
+/* Hover Effect on Button */
+.submit-button:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+/* Button Press Effect */
+.submit-button:active {
+    transform: scale(0.95);
+}

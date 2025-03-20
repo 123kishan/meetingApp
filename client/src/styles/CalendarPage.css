@@ -1,0 +1,106 @@
+/* Background Theme */
+.calendar-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #4b2e1e; /* Dark Brown */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+/* Semi-transparent Overlay */
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* Content Box */
+.content {
+    position: relative;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    width: 480px;
+    text-align: center;
+}
+
+/* Page Title */
+.title {
+    font-size: 26px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Calendar Styling */
+.calendar-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Custom Calendar Styles */
+.react-calendar {
+    border-radius: 10px;
+    background: #f7f7f7;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border: none;
+}
+
+/* Change Day Tile Colors */
+.react-calendar__tile {
+    font-size: 16px;
+    color: #4b2e1e;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+/* Highlight Selected Date */
+.react-calendar__tile--active {
+    background: #ff7e5f;
+    color: white;
+    border-radius: 8px;
+}
+
+/* Room & Duration Selector */
+.selector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.selector label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.selector select {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background: #eaeaea;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Select Dropdown Hover Effect */
+.selector select:hover {
+    background: #d8d8d8;
+}
+
+/* Select Focus Effect */
+.selector select:focus {
+    outline: none;
+    border: 2px solid #ff7e5f;
+}

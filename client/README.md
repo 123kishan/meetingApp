@@ -1,70 +1,175 @@
-# Getting Started with Create React App
+Meeting Room Booking System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Overview
 
-## Available Scripts
+This project is a Meeting Room Booking System that allows users to check available meeting slots, book meetings, and generate new slots for a given date. The system is built with a React frontend and an Express.js backend that communicates with a MySQL database.
 
-In the project directory, you can run:
+Tech Stack
 
-### `npm start`
+Frontend: React, React Router
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Backend: Express.js, MySQL
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Database: MySQL
 
-### `npm test`
+Hosting & Environment Management: Node.js with dotenv for environment variables
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Backend (Express.js & MySQL)
 
-### `npm run build`
+Setup Instructions
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Clone the repository:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Install dependencies:  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Set up environment variables by creating a .env file in the server directory with the following values:
 
-### `npm run eject`
+Start the server:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Set up part:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1.Set up for backend setup:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+cd meeting-app;
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+cd server;
+npm init -y;
+npm install express mysql cors body-parser dotenv;
 
-## Learn More
+//to run backend when whole frontend,backend,database setup done
+node server.js;
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. Setup Database:
+How to Run db.js
+Once you've created the file, you can run it with:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+cd meeting-app;
 
-### Code Splitting
+//move to database folder in terminal with cd database in main project folder and run
+node db.js;
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+3.Setup for frontend:
 
-### Analyzing the Bundle Size
+cd client
+npm install axios react-router-dom @fullcalendar/react @fullcalendar/daygrid @fullcalendar/timegrid;
+npm install react-calendar;
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+//to start backend when whole frontend,backend,database setup done
+cd server;
+node server.js;
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+//to start frontend
+cd client
+npm start;
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Response:
 
-### Deployment
+✅ Book a Meeting Slot
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Endpoint: POST /api/book-slot
 
-### `npm run build` fails to minify
+Description: Books a meeting slot if it's available.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Request Body:
+
+Response:
+
+✅ Generate Slots for a Date
+
+Endpoint: POST /api/generate-slots
+
+Description: Generates meeting slots for a selected date.
+
+Request Body:
+
+Response:
+
+Frontend (React.js)
+
+Routing (App.js)
+
+The frontend uses React Router for navigation:
+
+Path
+
+Component
+
+Description
+
+/
+
+Home.js
+
+Homepage
+
+/meeting-rooms
+
+MeetingRooms.js
+
+List of available meeting rooms
+
+/booking/:room
+
+Booking.js
+
+Booking page for a selected room
+
+/calendar/:room
+
+CalendarPage.js
+
+Calendar view of room bookings
+
+Running the Frontend
+
+Navigate to the client folder:
+
+Install dependencies:
+
+Start the frontend:
+
+This will run the React app on http://localhost:3000/
+
+
+This script will:
+
+Create the meetings_db database (if not exists).
+Create three tables (meeting_slots, meetings, and meeting_slots_archive).
+Close the MySQL connection after execution.
+
+our schema and query to view it :
+SELECT table_name, column_name, data_type, column_type
+    -> FROM information_schema.columns
+    -> WHERE table_schema = 'meetings_db';
++----------------+-------------+-----------+--------------+
+| TABLE_NAME     | COLUMN_NAME | DATA_TYPE | COLUMN_TYPE  |
++----------------+-------------+-----------+--------------+
+| meeting_slots  | id          | int       | int          |
+| meeting_slots  | date        | date      | date         |
+| meeting_slots  | time_slot   | varchar   | varchar(50)  |
+| meeting_slots  | start_time  | time      | time         |
+| meeting_slots  | end_time    | time      | time         |
+| meeting_slots  | room        | varchar   | varchar(50)  |
+| meeting_slots  | duration    | int       | int          |
+| meeting_slots  | is_booked   | tinyint   | tinyint(1)   |
+| meeting_slots  | user_email  | varchar   | varchar(100) |
+| meeting_slots  | first_name  | varchar   | varchar(50)  |
+| meeting_slots  | last_name   | varchar   | varchar(50)  |
+| meetings       | id          | int       | int          |
+| meetings       | email       | varchar   | varchar(255) |
+| meetings       | first_name  | varchar   | varchar(100) |
+| meetings       | last_name   | varchar   | varchar(100) |
+| meetings       | room        | varchar   | varchar(50)  |
+| meetings       | date        | date      | date         |
+| meetings       | time        | time      | time         |
+| meetings       | duration    | int       | int          |
+| meetings       | status      | varchar   | varchar(50)  |
+| meetings_slots | id          | int       | int          |
+| meetings_slots | date        | date      | date         |
+| meetings_slots | time_slot   | varchar   | varchar(20)  |
+| meetings_slots | room        | varchar   | varchar(50)  |
+| meetings_slots | duration    | int       | int          |
+| meetings_slots | is_booked   | tinyint   | tinyint(1)   |
++----------------+-------------+-----------+--------------+
